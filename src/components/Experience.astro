@@ -1,0 +1,21 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const experiencias=[
+    {
+        date:"Diciembre 2023",
+        title:"Desarrollador FrontEnd-Bussines On Move",
+        description:"Desarrollé una landing page responsiva y atractiva utilizando HTML, CSS, PHP y Bootstrap para mejorar la estética y la experiencia de usuario con el fin de atraer más clientes. Trabajé de forma remota en el rediseño y optimización del front-end del sitio web, aplicando mis habilidades en diseño web adaptable. Implementé mejoras en la navegación y la interfaz para que la página sea más intuitiva en distintos dispositivos.",
+        link:"https://businessonmove.com/",
+    },
+    { date:"Diciembre 2023",
+        title:"Desarrollador FrontEnd-Bussines On Move",
+        description:"Desarrollé una landing page responsiva y atractiva utilizando HTML, CSS, PHP y Bootstrap para mejorar la estética y la experiencia de usuario con el fin de atraer más clientes. Trabajé de forma remota en el rediseño y optimización del front-end del sitio web, aplicando mis habilidades en diseño web adaptable. Implementé mejoras en la navegación y la interfaz para que la página sea más intuitiva en distintos dispositivos.",
+        link:"https://businessonmove.com/",}
+]
+---
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700 mx-auto">                  
+    {experiencias.map((experiencia)=>(
+        <ExperienceItem {...experiencia}/>
+    ))}
+</ol>
