@@ -10,7 +10,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -18,8 +18,16 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script>
+			// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+			if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark')
+			}
+		</script>
 	</head>
-	<body>
+	<body class=" dark:bg-[#050505] bg-violet-300">
 		
 		<Header></Header>
 		<slot />
@@ -34,16 +42,18 @@ const { title } = Astro.props;
 		font-family: 'Noto Serif Vithkuqi Variable', sans-serif;
 		scroll-behavior: smooth;
 		
- 
-
 	}
 	body{
-		background-color: #050505;
+		
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
 		
 		
 	}
-	
+	@media(prefers-reduce-motion: reduce){
+		html{
+			scroll-behavior: auto;
+		}
+	}
 </style>

@@ -1,41 +1,59 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Badge from '../components/Badge.astro';
+import SocialNetwork from '../components/SocialNetwork.astro'
 import SectionContainer from '../components/SectionContainer.astro';
 import Experience from "../components/Experience.astro"
+import Projects from "../components/Projects.astro"
+import Footer from "../components/Footer.astro"
 import GithubIcon from '../icons/Github.astro';
 import LinkedinIcon from '../icons/Linkedin.astro';
 import GmailIcon from '../icons/Gmail.astro';
-import SocialNetwork from '../components/SocialNetwork.astro'
-import Briefcase from '../icons/Briefcase.astro'
+import CodeBracketsIcon from '../icons/CodeBrackets.astro';
+import BriefcaseIcon from '../icons/Briefcase.astro'
 
 ---
 
 <Layout title="Portfolio-MauricioQuiroga-Desarrollador y Programador Web">
-	<div class="absolute flex inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#8F00FF_100%)]"></div>
+
+	<div class="absolute flex inset-0 -z-10 h-full w-full items-center px-5 py-24 dark:[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#8F00FF_100%)] [background:radial-gradient(125%_120%_at_45%_5%,#8F00FF_40%,#000_100%)]"></div>
+	<main class="px-4">
 		
-	<main>
-		<img src="/profilePhoto.png" alt="MauricioPhoto" class="rounded-full size-60 mx-auto">
 
-<SectionContainer>
-	<h1 class="text-white text-balance text-center mx-auto text-5xl font-bold flex justify-center sm:flex-row flex-col gap-x-4 pb-5">Hola, soy Mauricio! <div class="flex items-center mx-auto"> <a href="https://www.linkedin.com/in/mauricio-quiroga-7b8b00246/" target="_blank" class="flex pt-2"><Badge>Disponible para trabajar</Badge></a></div> </h1>
+<SectionContainer class="h-100">
+	<img src="/profilePhoto.png" alt="MauricioPhoto" class="img-profile size-60 mx-auto mb-3">
+	<h1 class="text-white text-balance text-center mx-auto text-5xl font-bold flex justify-center sm:flex-row flex-col gap.2 xl:gap-x-4 pb-5">Hola, soy Mauricio! <div class="flex items-center mx-auto"> <a href="https://www.linkedin.com/in/mauricio-quiroga-7b8b00246/" target="_blank" class="flex pt-2"><Badge>Disponible para trabajar</Badge></a></div> </h1>
 
-	<h2 class="text-2xl text-wrap ">Programando desde 2022. <span class="text-sky-400">Desarollador web</span>  apasionado. Estoy en el ultimo año de la <span class="text-sky-400">Tecnicatura en Desarrollo de Software</span>. Especializado en <span class="text-sky-400">FrontEnd</span>, y además tengo conocimientos de <span class="text-sky-400">BackEnd</span>.  <span>Vivo en Mendoza,Argentina</span>.</h2>
+	<h2 class="text-2xl text-wrap ">Programando desde 2022. <span class="text-sky-400">Desarollador web</span>  apasionado. Especializado en <span class="text-sky-400">FrontEnd</span>, y además tengo conocimientos de <span class="text-sky-400">BackEnd</span>.  <span>Vivo en Mendoza,Argentina</span>.</h2>
 
 	<ul class="flex flex-row gap-4 py-3">
 		<SocialNetwork  href="https://github.com/Mauricio333bit"><GithubIcon ></SocialNetwork>
 		<SocialNetwork href="https://www.linkedin.com/in/mauricio-quiroga-7b8b00246/" ><LinkedinIcon></SocialNetwork>
 		<SocialNetwork href="mailto:mauriquiroga97@gmail.com"><GmailIcon></SocialNetwork>
-		<SocialNetwork href="mailto:mauriquiroga97@gmail.com" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-white border border-gray-200 rounded-lg hover:bg-gray-100  focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200  dark:bg-transparent dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Descargar CV</SocialNetwork>		
+		<SocialNetwork href="mailto:mauriquiroga97@gmail.com" class="inline-flex items-center px-4 py-2 text-sm font-medium text-black bg-white border border-gray-200 rounded-lg hover:bg-gray-100  focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200  dark:bg-transparent dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Descargar CV</SocialNetwork>		
 	</ul>
 </SectionContainer>
-<SectionContainer class="pb-10 pt-32">
-	<div class="flex gap-2 align-center"><h2 class="pb-7 text-3xl">Experiencia laboral </h2><Briefcase></Briefcase></div>
-	
-	<Experience></Experience>
+<SectionContainer id="experiencia" class="pb-10 pt-32">
+	<div class="flex gap-2 align-center"><h2 class="font-extrabold pb-7 text-xl md:text-3xl text-gray-950 dark:text-white">Experiencia laboral</h2><BriefcaseIcon></div>
+<Experience></Experience>
 </SectionContainer>
+<SectionContainer id="sobre_mi" class="pb-10 pt-32">
+	<div class="flex gap-2 align-center"><h2 class="font-extrabold pb-7 text-xl md:text-3xl text-gray-950 dark:text-white">Sobre mi</h2><BriefcaseIcon></div>
+		<h2 class="text-xl  text-pretty text-black/80 dark:text-violet-500   ">Actualmente estoy en el ultimo año de la <span class="text-orange-700 dark:text-gray-200">Tecnicatura en Desarrollo de Software</span>, tambien he concretado bootcamps de <span class="text-orange-700 dark:text-gray-200">Programación</span>  de <span class="text-orange-700 dark:text-gray-200">Oracle</span>, <span class="text-orange-700 dark:text-gray-200">JavaScript-FullSatck</span> y <span class="text-orange-700 dark:text-gray-200">Java-Spring</span> en la agencia <span class="text-orange-700 dark:text-gray-200">Codo a Codo</span>.</h2>
+		<p class="my-3 text-orange-700 dark:text-violet-500 ">Para mi la programación es una forma de arte, cada linea de codigo que escribo es una oportunidad de expresar mi creatividad. Disfruto el desafío constante de resolver problemas, lo que me impulsa a cultivar mis habilidades y descubrir soluciones ingeniosas...</p>
+</SectionContainer>
+<SectionContainer id="proyectos" class="pb-10 ">
+	<div class="flex gap-2 align-center"><h2 class="font-extrabold pb-7 text-xl md:text-3xl text-gray-950 dark:text-white">Proyectos</h2><CodeBracketsIcon></CodeBracketsIcon> </div>
+	<div class="flex gap-2 flex-wrap sm:flex-nowrap justify-center" ><Projects class="mx-auto"></Projects></div>
+</SectionContainer>
+<Footer></Footer>
 
 		
 </main>
 	
 </Layout>
+<style>
+	.img-profile{
+		border-radius: 50% 50% 49% 51% / 39% 40% 60% 61%  ;
+	}
+</style>
