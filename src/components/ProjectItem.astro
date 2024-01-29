@@ -15,7 +15,7 @@ const {title,description,img,link,github,tags}= Astro.props
         </a>
         <p class="mb-3 font-normal text-gray-900 dark:text-gray-400">{description}</p>
         <ul class="flex gap-2 py-2">
-            {tags.map((tag)=>(
+            {tags.map((tag:string)=>(
                 <Badge>{tag}</Badge>
             ))}
         </ul>

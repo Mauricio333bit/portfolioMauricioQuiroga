@@ -1,15 +1,15 @@
 import { isRemotePath } from '@astrojs/internal-helpers/path';
 import mime from 'mime/lite.js';
-import { A as AstroError, I as InvalidImageService, i as isESMImportedImage, a as isLocalService, b as isRemoteImage, D as DEFAULT_HASH_PROPS, c as isRemoteAllowed } from '../astro/assets-service_fb9y_qjP.mjs';
-import { A as AstroError$1, c as ExpectedImageOptions, E as ExpectedImage, d as InvalidImageService$1, e as createAstro, f as createComponent, g as ImageMissingAlt, r as renderTemplate, m as maybeRenderHead, h as addAttribute, s as spreadAttributes } from '../astro_WORZN5SE.mjs';
+import { A as AstroError, c as InvalidImageService, d as ExpectedImageOptions, E as ExpectedImage, e as createAstro, f as createComponent, g as ImageMissingAlt, r as renderTemplate, m as maybeRenderHead, h as addAttribute, s as spreadAttributes } from '../astro_alsDBiBx.mjs';
+import { i as isESMImportedImage, a as isLocalService, b as isRemoteImage, D as DEFAULT_HASH_PROPS, c as isRemoteAllowed } from '../astro/assets-service_QbDy8jDK.mjs';
 import 'html-escaper';
 import 'clsx';
 
-async function getConfiguredImageService$1() {
+async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      '../astro/assets-service_fb9y_qjP.mjs'
+      '../astro/assets-service_QbDy8jDK.mjs'
     ).then(n => n.s).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -22,58 +22,15 @@ async function getConfiguredImageService$1() {
   }
   return globalThis.astroAsset.imageService;
 }
-
-const fnv1a52 = (str) => {
-  const len = str.length;
-  let i = 0, t0 = 0, v0 = 8997, t1 = 0, v1 = 33826, t2 = 0, v2 = 40164, t3 = 0, v3 = 52210;
-  while (i < len) {
-    v0 ^= str.charCodeAt(i++);
-    t0 = v0 * 435;
-    t1 = v1 * 435;
-    t2 = v2 * 435;
-    t3 = v3 * 435;
-    t2 += v0 << 8;
-    t3 += v1 << 8;
-    t1 += t0 >>> 16;
-    v0 = t0 & 65535;
-    t2 += t1 >>> 16;
-    v1 = t1 & 65535;
-    v3 = t3 + (t2 >>> 16) & 65535;
-    v2 = t2 & 65535;
-  }
-  return (v3 & 15) * 281474976710656 + v2 * 4294967296 + v1 * 65536 + (v0 ^ v3 >> 4);
-};
-const etag = (payload, weak = false) => {
-  const prefix = weak ? 'W/"' : '"';
-  return prefix + fnv1a52(payload).toString(36) + payload.length.toString(36) + '"';
-};
-
-async function getConfiguredImageService() {
-  if (!globalThis?.astroAsset?.imageService) {
-    const { default: service } = await import(
-      // @ts-expect-error
-      '../astro/assets-service_fb9y_qjP.mjs'
-    ).then(n => n.s).catch((e) => {
-      const error = new AstroError$1(InvalidImageService$1);
-      error.cause = e;
-      throw error;
-    });
-    if (!globalThis.astroAsset)
-      globalThis.astroAsset = {};
-    globalThis.astroAsset.imageService = service;
-    return service;
-  }
-  return globalThis.astroAsset.imageService;
-}
 async function getImage$1(options, imageConfig) {
   if (!options || typeof options !== "object") {
-    throw new AstroError$1({
+    throw new AstroError({
       ...ExpectedImageOptions,
       message: ExpectedImageOptions.message(JSON.stringify(options))
     });
   }
   if (typeof options.src === "undefined") {
-    throw new AstroError$1({
+    throw new AstroError({
       ...ExpectedImage,
       message: ExpectedImage.message(
         options.src,
@@ -125,13 +82,38 @@ async function getImage$1(options, imageConfig) {
   };
 }
 
+const fnv1a52 = (str) => {
+  const len = str.length;
+  let i = 0, t0 = 0, v0 = 8997, t1 = 0, v1 = 33826, t2 = 0, v2 = 40164, t3 = 0, v3 = 52210;
+  while (i < len) {
+    v0 ^= str.charCodeAt(i++);
+    t0 = v0 * 435;
+    t1 = v1 * 435;
+    t2 = v2 * 435;
+    t3 = v3 * 435;
+    t2 += v0 << 8;
+    t3 += v1 << 8;
+    t1 += t0 >>> 16;
+    v0 = t0 & 65535;
+    t2 += t1 >>> 16;
+    v1 = t1 & 65535;
+    v3 = t3 + (t2 >>> 16) & 65535;
+    v2 = t2 & 65535;
+  }
+  return (v3 & 15) * 281474976710656 + v2 * 4294967296 + v1 * 65536 + (v0 ^ v3 >> 4);
+};
+const etag = (payload, weak = false) => {
+  const prefix = weak ? 'W/"' : '"';
+  return prefix + fnv1a52(payload).toString(36) + payload.length.toString(36) + '"';
+};
+
 const $$Astro$1 = createAstro();
 const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$Image;
   const props = Astro2.props;
   if (props.alt === void 0 || props.alt === null) {
-    throw new AstroError$1(ImageMissingAlt);
+    throw new AstroError(ImageMissingAlt);
   }
   if (typeof props.width === "string") {
     props.width = parseInt(props.width);
@@ -156,7 +138,7 @@ const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
   const specialFormatsFallback = ["gif", "svg", "jpg", "jpeg"];
   const { formats = defaultFormats, pictureAttributes = {}, fallbackFormat, ...props } = Astro2.props;
   if (props.alt === void 0 || props.alt === null) {
-    throw new AstroError$1(ImageMissingAlt);
+    throw new AstroError(ImageMissingAlt);
   }
   const optimizedImages = await Promise.all(
     formats.map(
@@ -204,7 +186,7 @@ async function loadRemoteImage(src) {
 }
 const GET = async ({ request }) => {
   try {
-    const imageService = await getConfiguredImageService$1();
+    const imageService = await getConfiguredImageService();
     if (!("transform" in imageService)) {
       throw new Error("Configured image service is not a local service");
     }
